@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import News from './page/News';
-import Results from './page/Results';
+import News from './pages/News';
+import Results from './pages/Results';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedTab: 'news' };
+    this.state = { selectedTab: 'results' };
   }
 
   render() {
@@ -30,15 +30,6 @@ export default class App extends React.Component {
           onPress={() => this.setState({ selectedTab: 'results' })}>
           <View style={styles.container}>
             <Results />
-          </View>
-        </TabNavigator.Item>
-        <TabNavigator.Item
-          selected={this.state.selectedTab === 'wiki'}
-          title="Wiki"
-          renderIcon={() => <Icon name="info-circle" size={30} />}
-          onPress={() => this.setState({ selectedTab: 'wiki' })}>
-          <View style={styles.container}>
-          <Text>Wiki</Text>
           </View>
         </TabNavigator.Item>
         <TabNavigator.Item

@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { getNewsByChannel } from '../util/data';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { getNewsByChannel } from '../utils/data';
+import NewsItem from '../components/NewsItem';
 
 export default class News extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class News extends React.Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.data}
-          renderItem={({item}) => <Text numberOfLines={1} style={styles.item}>{item.title}</Text>}
+          renderItem={({item}) => <NewsItem data={item} />}
         />
       </View>
     );
@@ -65,12 +66,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  item: {
-    padding: 4,
-    textAlign: 'left',
-    fontSize: 18,
-    borderBottomWidth: 1,
-    borderBottomColor: '#aaa',
   },
 });
