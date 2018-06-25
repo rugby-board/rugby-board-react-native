@@ -6694,6 +6694,10 @@ timed-out@4.0.1, timed-out@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
 
+timeoutify-promise@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/timeoutify-promise/-/timeoutify-promise-0.2.0.tgz#0bb1ccd713034b81aa442ba06078fa6b8f5d7d98"
+
 tiny-queue@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/tiny-queue/-/tiny-queue-0.2.1.tgz#25a67f2c6e253b2ca941977b5ef7442ef97a6046"

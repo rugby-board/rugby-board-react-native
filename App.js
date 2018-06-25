@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import News from './page/News';
+import Results from './page/Results';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,26 +13,29 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <TabNavigator>
+      <TabNavigator tabBarStyle={styles.tabbar}>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'news'}
           title="News"
+          renderIcon={() => <Icon name="newspaper-o" size={30} />}
           onPress={() => this.setState({ selectedTab: 'news' })}>
           <View style={styles.container}>
-            <Text>News</Text>
+            <News />
           </View>
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'results'}
           title="Results"
+          renderIcon={() => <Icon name="table" size={30} />}
           onPress={() => this.setState({ selectedTab: 'results' })}>
           <View style={styles.container}>
-          <Text>Results</Text>
+            <Results />
           </View>
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'wiki'}
           title="Wiki"
+          renderIcon={() => <Icon name="info-circle" size={30} />}
           onPress={() => this.setState({ selectedTab: 'wiki' })}>
           <View style={styles.container}>
           <Text>Wiki</Text>
@@ -38,6 +44,7 @@ export default class App extends React.Component {
         <TabNavigator.Item
           selected={this.state.selectedTab === 'about'}
           title="About"
+          renderIcon={() => <Icon name="home" size={30} />}
           onPress={() => this.setState({ selectedTab: 'about' })}>
           <View style={styles.container}>
             <Text>Copyright &copy; David Zhang, 2018.</Text>
@@ -55,5 +62,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 48,
+  },
+  tabbar: {
+    paddingBottom: 16,
+    height: 72,
   },
 });
