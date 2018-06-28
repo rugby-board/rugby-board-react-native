@@ -18,6 +18,7 @@ export default class App extends React.Component {
           selected={this.state.selectedTab === 'news'}
           title="News"
           renderIcon={() => <Icon name="newspaper-o" size={30} />}
+          renderSelectedIcon={() => <Icon name="newspaper-o" size={30} />}
           onPress={() => this.setState({ selectedTab: 'news' })}>
           <View style={styles.container}>
             <News />
@@ -27,6 +28,7 @@ export default class App extends React.Component {
           selected={this.state.selectedTab === 'results'}
           title="Results"
           renderIcon={() => <Icon name="table" size={30} />}
+          renderSelectedIcon={() => <Icon name="table" size={30} />}
           onPress={() => this.setState({ selectedTab: 'results' })}>
           <View style={styles.container}>
             <Results />
@@ -36,6 +38,7 @@ export default class App extends React.Component {
           selected={this.state.selectedTab === 'about'}
           title="About"
           renderIcon={() => <Icon name="home" size={30} />}
+          renderSelectedIcon={() => <Icon name="home" size={30} />}
           onPress={() => this.setState({ selectedTab: 'about' })}>
           <View style={styles.container}>
             <Text>Copyright &copy; David Zhang, 2018.</Text>
@@ -54,6 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 48,
+    marginBottom: 48,
   },
   tabbar: {
     paddingBottom: 16,
