@@ -1,18 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Markdown from 'react-native-simple-markdown'
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import HTML from 'react-native-render-html';
 
 export default class NewsItem extends React.Component {
   render() {
-    const {id, title, content, channel_text, event_text, created_at} = this.props.data;
+    const {title, rendered_content, channel_text, event_text, created_at} = this.props.data;
     return (
       <View style={styles.item}>
         <View style={styles.head}>
           <Text numberOfLines={1} style={styles.title}>{title}</Text>
         </View>
-        <View style={styles.content}>
-          <Markdown styles={markdownStyles}>{content}</Markdown>
-        </View>
+        <ScrollView style={styles.content}>
+          <HTML html={rendered_content} imagesMaxWidth={Dimensions.get('window').width} />
+        </ScrollView>
         <View style={styles.footer}>
           <Text>{channel_text} | {event_text}</Text>
         </View>
@@ -40,29 +40,3 @@ const styles = StyleSheet.create({
     padding: 2,
   },
 });
-
-const markdownStyles = {
-  table: {
-    textAlign: 'center',
-  },
-  tableHeader: {
-    color: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderBottomWidth: 1,
-    borderColor: '#aaa',
-  },
-  tableRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  tableRowCell: {
-    // width: '33.3%',
-    // textAlign: 'center',
-    padding: 4,
-  },
-  tableRowLast: {
-    textAlign: 'right',
-    borderColor: 'transparent',
-  },
-};
