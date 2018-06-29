@@ -7,7 +7,6 @@ export default class About extends React.Component {
       <ScrollView style={styles.container}>
         <Text style={styles.title}>Rugby News Board</Text>
         <Text style={styles.copyright}>Copyright &copy; David Zhang, 2018.</Text>
-        <Text style={styles.website}>nbrugby.com</Text>
         <Text style={styles.library}>Libraries We Use</Text>
         <Text>React Native</Text>
         <Text>Momentjs</Text>
@@ -31,10 +30,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   copyright: {
-    fontSize: 16,
-    marginBottom: 16,
-  },
-  website: {
     fontSize: 16,
     marginBottom: 16,
   },

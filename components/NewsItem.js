@@ -10,17 +10,25 @@ export default class NewsItem extends React.Component {
   }
 
   render() {
-    const {title, rendered_content, channel_text, event_text, created_at} = this.props.data;
+    const {title, content, rendered_content, channel_text, event_text, created_at} = this.props.data;
+    let htmlView = (
+      <HTMLView
+        value={`${NewsItem.trimNewLines(rendered_content)}`}
+        stylesheet={contentStyles}
+      />
+    );
+    if (this.props.showResultStyle) {
+      htmlView = (
+        <Text>{content}</Text>
+      );
+    }
     return (
       <View style={styles.item}>
         <View style={styles.head}>
           <Text numberOfLines={1} style={styles.title}>{title}</Text>
         </View>
         <ScrollView>
-          <HTMLView
-            value={`${NewsItem.trimNewLines(rendered_content)}`}
-            stylesheet={contentStyles}
-          />
+          {htmlView}
         </ScrollView>
         <View style={styles.footer}>
           <Text style={styles.footerLeft}>{channel_text} | {event_text}</Text>

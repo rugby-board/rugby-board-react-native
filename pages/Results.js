@@ -53,7 +53,7 @@ export default class Results extends React.Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.data}
-          renderItem={({item}) => <NewsItem data={item} />}
+          renderItem={({item}) => <NewsItem data={item} showResultStyle />}
         />
       </View>
     );
