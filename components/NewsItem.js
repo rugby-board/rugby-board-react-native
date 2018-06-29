@@ -1,8 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
-import HTML from 'react-native-render-html';
+import HTMLView from 'react-native-htmlview';
+import moment from 'moment';
 
 export default class NewsItem extends React.Component {
+  static trimNewLines(text) {
+    if (!text) return;
+    return text.replace(/(\r\n|\n|\r)/gm, '');
+  }
+
   render() {
     const {title, rendered_content, channel_text, event_text, created_at} = this.props.data;
     return (
@@ -10,11 +16,15 @@ export default class NewsItem extends React.Component {
         <View style={styles.head}>
           <Text numberOfLines={1} style={styles.title}>{title}</Text>
         </View>
-        <ScrollView style={styles.content}>
-          <HTML html={rendered_content} imagesMaxWidth={Dimensions.get('window').width} />
+        <ScrollView>
+          <HTMLView
+            value={`${NewsItem.trimNewLines(rendered_content)}`}
+            stylesheet={contentStyles}
+          />
         </ScrollView>
         <View style={styles.footer}>
-          <Text>{channel_text} | {event_text}</Text>
+          <Text style={styles.footerLeft}>{channel_text} | {event_text}</Text>
+          <Text style={styles.footerRight}>{`${moment(created_at).format('HH:mm YYYY-MM-DD')}`}</Text>
         </View>
       </View>
     );
@@ -24,19 +34,36 @@ export default class NewsItem extends React.Component {
 const styles = StyleSheet.create({
   item: {
     padding: 8,
+    marginBottom: 18,
   },
   head: {
-    padding: 2,
-    marginBottom: 8,
+    marginBottom: 16,
   },
   title: {
     fontSize: 20,
+    fontWeight: '500',
   },
   content: {
-    padding: 2,
     marginBottom: 8,
   },
   footer: {
-    padding: 2,
+    borderStyle: 'solid',
+    borderTopColor: '#aaa',
+    borderTopWidth: 1,
+    marginTop: 8,
+    paddingTop: 8,
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  footerLeft: {
+  },
+  footerRight: {
+  },
+});
+
+const contentStyles = StyleSheet.create({
+  p: {
+    fontSize: 16,
   },
 });
