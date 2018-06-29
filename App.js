@@ -4,11 +4,12 @@ import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import News from './pages/News';
 import Results from './pages/Results';
+import About from './pages/About';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedTab: 'results' };
+    this.state = { selectedTab: 'news' };
   }
 
   render() {
@@ -41,8 +42,7 @@ export default class App extends React.Component {
           renderSelectedIcon={() => <Icon name="home" size={30} />}
           onPress={() => this.setState({ selectedTab: 'about' })}>
           <View style={styles.container}>
-            <Text>Copyright &copy; David Zhang, 2018.</Text>
-            <Text>nbrugby.com</Text>
+            <About />
           </View>
         </TabNavigator.Item>
       </TabNavigator>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 48,
-    marginBottom: 48,
+    marginBottom: 24,
   },
   tabbar: {
     paddingBottom: 16,
